@@ -3,7 +3,7 @@
 
 # quick start
  (1) add mongodb.properties to Tomcat/commoncfg/dbconf/
-<br/> (2)use example
+<br/> (2) use example
 ```
   add：
      void insertOne(String collName, Document document)；//新增单条 collName 表名   document需要保存的对象
