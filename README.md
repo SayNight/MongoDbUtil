@@ -10,7 +10,6 @@
      void insertMany(String collName, List<Document> documents)；//入库多条  
 
   add examples：
-
     public String add(@ModelAttribute RequestData data){
         //入库之前需先转换为document
         Document document = data.toDocument(data);
@@ -18,10 +17,10 @@
     }
 
   query：（注意Filters的用法  改删查的查询匹配条件都使用此类）
-        Document findById(String collName, String id)；//通过id主键查询  collName为表名
+        Document findById(String collName, String id)；//quyer by id,  collName为表名
         MongoCursor<Document> findByFilter(String collName, Bson filter)；//条件查询  collName为表名  filter为查询条件 
         MongoCursor<Document> findByPage(String collName, Bson filter,Bson sort , int pageNo, int pageSize);//分页查询 filter查询条件 sort排序条件
-       //如Bson sort = new BasicDBObject("_id", 1);  通过主键_id排序  使用 1 和 -1 来指定排序的方式，其中 1 为升序排列，而-1是用于降序排列。  
+       //如Bson sort = new BasicDBObject("_id", 1);  order by id,  1：asc, -1:desc  
        // pageNo 需要去的页 不可为0pageSize每页大小
        
   query examples：
