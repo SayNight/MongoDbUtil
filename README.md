@@ -10,7 +10,7 @@
  - insert
  
 ```
-  void insertOne(String collName, Document document)；//新增单条 collName 表名   document需要保存的对象
+  void insertOne(String collName, Document document)；//新增单条 collName:表名 document:需要保存的对象
      
   void insertMany(String collName, List<Document> documents)；//入库多条
 ```
@@ -27,8 +27,9 @@
 
 ```
     Document findById(String collName, String id)；//quyer by id,  collName为表名
-        
-    MongoCursor<Document> findByFilter(String collName, Bson filter)；//条件查询  collName为表名  filter为查询条件 
+    
+    //条件查询  collName为表名  filter为查询条件 
+    MongoCursor<Document> findByFilter(String collName, Bson filter)；
         
     //分页查询 filter查询条件 sort排序条件
     MongoCursor<Document> findByPage(String collName, Bson filter,Bson sort , int pageNo, int pageSize);
@@ -44,7 +45,8 @@
     //Bson filter = Filters.eq("_id", "-12");等于
     //String[] items = {"1","3","4"};
     //Bson filter = Filters.in("cardNo", items);查询卡号分别为 1，3 ，4的数据
-    //查询当前五分钟之内的数据   firstDate在mongodb中是直接以Date类型存储的   此处注意Filters.and的用法  可以同时包含多个条件
+    //查询当前五分钟之内的数据   firstDate在mongodb中是直接以Date类型存储的   
+    //此处注意Filters.and的用法  可以同时包含多个条件
     Date date = new Date();
     date.setMinutes(-5);
     Bson filter = Filters.and(Filters.lte("firstDate", new Date()),Filters.gte("firstDate", date));
@@ -65,7 +67,7 @@
  
 
 ```
-    int deleteByFilter(String collName, Bson filter)；//按条件删除  返回受影响条数条数  collName表名   filter条件
+    int deleteByFilter(String collName, Bson filter)；//按条件删除 返回受影响条数条数 collName表名 filter条件
         
     int deleteById(String collName, String id)；//通过id删除  返回受影响条数
 ```
@@ -84,8 +86,9 @@
 
 ```
     int updateById(String collName, String id, Document newdoc)；//按id修改  newdoc为修改后的对象  返回受影响条数
-        
-    int updateByFilter(String collName,  Bson filter, Document newdoc)//按filter条件修改  newdoc为修改后的对象  返回受影响条数
+    
+    //按filter条件修改  newdoc为修改后的对象  返回受影响条数    
+    int updateByFilter(String collName,  Bson filter, Document newdoc)
 ```
 使用示例
 
